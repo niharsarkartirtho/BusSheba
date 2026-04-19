@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bus Operator Panel</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #eef2f7;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: 50px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #1e7e34;
+    }
+
+    .status {
+        margin-top: 15px;
+        padding: 10px;
+        background: #d4edda;
+        border-radius: 5px;
+        color: #155724;
+    }
+
+    .map {
+        margin-top: 20px;
+        height: 200px;
+        background: #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Operator Panel</h2>
+
+    <input type="text" id="bus" placeholder="Bus Number">
+    <input type="text" id="lat" placeholder="Latitude">
+    <input type="text" id="lng" placeholder="Longitude">
+
+    <button onclick="updateLocation()">Update Location</button>
+
+    <div class="map">
+        Live Map (Simulated)
+    </div>
+
+    <div class="status" id="status">
+        Waiting for update...
+    </div>
+</div>
+
+<script>
+function updateLocation() {
+    const bus = document.getElementById('bus').value;
+    const lat = document.getElementById('lat').value;
+    const lng = document.getElementById('lng').value;
+
+    if(bus === "" || lat === "" || lng === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    document.getElementById('status').innerHTML =
+        "Bus " + bus + " updated to location: (" + lat + ", " + lng + ")";
+}
+</script>
+
+</body>
+</html>
