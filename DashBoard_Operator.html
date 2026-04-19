@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Operator Dashboard</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+/* Header */
+.header {
+    background: #0d2b45;
+    color: white;
+    padding: 15px;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.header small {
+    color: #b0c4de;
+}
+
+/* Container */
+.container {
+    max-width: 420px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* Cards */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.card {
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    background: #dde5ec;
+}
+
+.card.green { background: #dfeee2; }
+.card.orange { background: #f3e4d2; }
+.card.blue { background: #dde7f2; }
+
+.card h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.card p {
+    margin: 5px 0 0;
+    font-size: 11px;
+    color: #666;
+}
+
+/* Chart */
+.chart {
+    margin-top: 15px;
+    background: #e9edf2;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 120px;
+    margin-top: 10px;
+}
+
+.bar {
+    width: 12%;
+    background: #5fa8dc;
+    border-radius: 5px 5px 0 0;
+}
+
+.bar.orange { background: #f57c00; }
+
+.days {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    margin-top: 5px;
+    color: #777;
+}
+
+/* Booking */
+.booking {
+    margin-top: 15px;
+}
+
+.booking-card {
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.booking-left {
+    font-size: 14px;
+}
+
+.booking-left small {
+    display: block;
+    color: #777;
+    font-size: 12px;
+}
+
+.price {
+    color: #1f5fa8;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h2>⚙ Operator Dashboard</h2>
+    <small>Dhaka City Transport Co.</small>
+</div>
+
+<div class="container">
+
+    <!-- Stats -->
+    <div class="grid">
+        <div class="card blue">
+            <h3>12</h3>
+            <p>TOTAL BUSES</p>
+        </div>
+
+        <div class="card green">
+            <h3>5</h3>
+            <p>ACTIVE ROUTES</p>
+        </div>
+
+        <div class="card orange">
+            <h3>৳3,240</h3>
+            <p>TODAY REVENUE</p>
+        </div>
+
+        <div class="card blue">
+            <h3>87</h3>
+            <p>TICKETS SOLD</p>
+        </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="chart">
+        <small>REVENUE THIS WEEK</small>
+
+        <div class="bars">
+            <div class="bar" style="height:40%"></div>
+            <div class="bar" style="height:60%"></div>
+            <div class="bar" style="height:45%"></div>
+            <div class="bar" style="height:70%"></div>
+            <div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:75%"></div>
+            <div class="bar orange" style="height:80%"></div>
+        </div>
+
+        <div class="days">
+            <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+        </div>
+    </div>
+
+    <!-- Booking -->
+    <div class="booking">
+        <small>RECENT BOOKINGS</small>
+
+        <div class="booking-card">
+            <div class="booking-left">
+                Adib Khan • Mirpur → Motijheel
+                <small>8:30 AM • Seat 2B</small>
+            </div>
+            <div class="price">৳35</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
