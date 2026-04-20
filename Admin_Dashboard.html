@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusSheba Admin Control Panel</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; margin: 0; padding: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; background: #1a2a3a; color: white; padding: 15px 30px; border-radius: 8px 8px 0 0; }
+        .sos-badge { background: #e74c3c; padding: 5px 15px; border-radius: 20px; font-weight: bold; }
+        
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 20px 0; }
+        .card { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        
+        .management-section { background: white; padding: 20px; border-radius: 10px; }
+        .search-bar { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 5px; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; color: #7f8c8d; text-transform: uppercase; font-size: 0.8rem; padding: 10px; }
+        td { padding: 15px 10px; border-bottom: 1px solid #eee; }
+        
+        .badge { padding: 4px 12px; border-radius: 15px; font-size: 0.85rem; }
+        .badge-passenger { background: #e3f2fd; color: #1976d2; }
+        .badge-operator { background: #fff8e1; color: #ffa000; }
+        .status-active { color: #2ecc71; }
+        .status-blocked { color: #e74c3c; }
+
+        .complaints { margin-top: 20px; border-left: 4px solid #e74c3c; background: #fff5f5; padding: 15px; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div>
+            <h1 style="margin:0;">Admin Control Panel</h1>
+            <small>BusSheba System</small>
+        </div>
+        <div>
+            <span class="sos-badge">3 SOS</span>
+            <span style="margin-left:15px; cursor:pointer;">⚙️</span>
+        </div>
+    </header>
+
+    <section class="stats-grid">
+        <div class="card" style="border-bottom: 4px solid #3498db;">
+            <h2 style="color: #3498db;">1,284</h2>
+            <p>TOTAL USERS</p>
+        </div>
+        <div class="card" style="border-bottom: 4px solid #2ecc71;">
+            <h2 style="color: #2ecc71;">24</h2>
+            <p>OPERATORS</p>
+        </div>
+        <div class="card" style="border-bottom: 4px solid #f1c40f;">
+            <h2 style="color: #f1c40f;">342</h2>
+            <p>BOOKINGS TODAY</p>
+        </div>
+        <div class="card" style="border-bottom: 4px solid #e91e63;">
+            <h2 style="color: #e91e63;">৳18.4K</h2>
+            <p>REVENUE</p>
+        </div>
+    </section>
+
+    <section class="management-section">
+        <h3>USER MANAGEMENT</h3>
+        <input type="text" class="search-bar" placeholder="🔍 Search name, email, phone...">
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>Adib Khan</strong><br>
+                        <small style="color:#7f8c8d;">adib@email.com</small>
+                    </td>
+                    <td><span class="badge badge-passenger">Passenger</span></td>
+                    <td><span class="status-active">Active</span></td>
+                    <td><button style="color:#e74c3c; border:none; background:none; cursor:pointer;">Block</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Rafiq Bus Co.</strong><br>
+                        <small style="color:#7f8c8d;">rafiq@bus.bd</small>
+                    </td>
+                    <td><span class="badge badge-operator">Operator</span></td>
+                    <td><span class="status-blocked">Blocked</span></td>
+                    <td><button style="color:#2ecc71; border:none; background:none; cursor:pointer;">Unblock</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="complaints">
+        <h4 style="color:#e74c3c; margin-top:0;">⚠️ ACTIVE COMPLAINTS</h4>
+        <div style="display:flex; align-items:center;">
+            <span style="background:#e74c3c; color:white; padding:2px 8px; font-size:0.7rem; border-radius:3px; margin-right:10px;">SOS</span>
+            <strong>HIGH PRIORITY</strong>
+        </div>
+        <p style="margin: 5px 0 0 0; font-size: 0.9rem;">Passenger Fatima — Bus DH-1234 · 2 mins ago</p>
+    </section>
+
+</body>
+</html>
