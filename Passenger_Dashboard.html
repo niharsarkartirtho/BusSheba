@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>BusSheba | Passenger Dashboard</title>
+    <!-- Google Fonts & simple reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #eef2f7 0%, #d9e0e8 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 2rem 1.5rem;
+            color: #1a2c3e;
+        }
+
+        /* main container */
+        .dashboard {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* header & branding */
+        .brand-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+            padding-bottom: 1rem;
+        }
+        .logo-area h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #0b3b4f, #1c6e6e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-area h1 i {
+            background: none;
+            color: #1c6e6e;
+            font-size: 2rem;
+        }
+        .badge {
+            background: rgba(28, 110, 110, 0.12);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #0f4e5a;
+        }
+        .passenger-greeting {
+            text-align: right;
+        }
+        .passenger-greeting p {
+            font-weight: 500;
+            background: white;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            font-size: 0.9rem;
+        }
+
+        /* card style */
+        .card {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(0px);
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
+            overflow: hidden;
+        }
+
+        /* search section */
+        .search-section {
+            margin-bottom: 2.5rem;
+        }
+        .search-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            align-items: flex-end;
+            padding: 1.8rem 2rem;
+        }
+        .input-group {
+            flex: 1;
+            min-width: 160px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #527a7a;
+            margin-bottom: 0.4rem;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 24px;
+            font-family: 'Inter', monospace;
+            font-size: 0.95rem;
+            background: white;
+            transition: 0.2s;
+            outline: none;
+            color: #1e2f3a;
+        }
+        .input-group input:focus, .input-group select:focus {
+            border-color: #2c8c8c;
+            box-shadow: 0 0 0 3px rgba(44,140,140,0.2);
+        }
+        .search-btn {
+            background: #1c6e6e;
+            border: none;
+            padding: 0.85rem 2rem;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-bottom: 0px;
+        }
+        .search-btn:hover {
+            background: #0e5555;
+            transform: scale(0.98);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        /* buses container */
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .results-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .bus-count {
+            background: #eef2f7;
+            padding: 0.3rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .buses-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .bus-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.2rem 1.5rem;
+            transition: all 0.2s;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.03);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .bus-card:hover {
+            border-color: #cbdcdc;
+            box-shadow: 0 12px 22px -12px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+        .bus-info {
+            flex: 3;
+            min-width: 200px;
+        }
+        .bus-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .bus-name i {
+            color: #2c8c8c;
+            font-size: 1.1rem;
+        }
+        .route-badge {
+            background: #f0f4f9;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .bus-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 8px;
+            color: #4a5e6b;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #f8fafc;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+        }
+        .price-section {
+            text-align: right;
+            min-width: 130px;
+        }
+        .price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #1c6e6e;
+            letter-spacing: -0.5px;
+        }
+        .price small {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .seats-left {
+            font-size: 0.8rem;
+            background: #fff0db;
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        .book-btn {
+            background: transparent;
+            border: 2px solid #1c6e6e;
+            padding: 0.6rem 1.3rem;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #1c6e6e;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .book-btn:hover {
+            background: #1c6e6e;
+            color: white;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            background: #fefefe;
+            border-radius: 36px;
+            color: #6c8695;
+        }
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e2f3a;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            z-index: 1000;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+            .search-grid {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .bus-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .price-section {
+                text-align: left;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #5c767f;
+        }
+    </style>
+</head>
+<body>
+<div class="dashboard">
+    <div class="brand-section">
+        <div class="logo-area">
+            <h1><i class="fas fa-bus-alt"></i> BusSheba</h1>
+            <div class="badge">Passenger Dashboard · real-time</div>
+        </div>
+        <div class="passenger-greeting">
+            <p><i class="far fa-user-circle"></i> Welcome, Riya <i class="fas fa-chevron-down" style="font-size: 10px;"></i></p>
+        </div>
+    </div>
+
+    <!-- FIND A BUS section -->
+    <div class="card search-section">
+        <div class="search-grid">
+            <div class="input-group">
+                <label><i class="fas fa-map-marker-alt"></i> FROM STOP</label>
+                <input type="text" id="fromStop" placeholder="e.g., Mirpur, Uttara, Motijheel..." value="Mirpur">
+            </div>
+            <div class="input-group">
+                <label><i class="fas fa-flag-checkered"></i> TO STOP</label>
+                <input type="text" id="toStop" placeholder="e.g., Motijheel, Farmgate..." value="Motijheel">
+            </div>
+            <div class="input-group">
+                <label><i class="far fa-calendar-alt"></i> TRAVEL DATE</label>
+                <input type="date" id="travelDate" value="2026-04-25">
+            </div>
+            <div>
+                <button id="searchBtn" class="search-btn"><i class="fas fa-search"></i> Search Buses</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Available Buses section -->
+    <div class="results-header">
+        <h2><i class="fas fa-chair"></i> Available Buses</h2>
+        <div class="bus-count" id="busCountDisplay">2 buses found</div>
+    </div>
+
+    <div id="busesContainer" class="buses-list">
+        <!-- dynamic bus cards injected here -->
+    </div>
+    <footer>
+        <i class="fas fa-shield-alt"></i> Safe & verified operators | Real seat availability
+    </footer>
+</div>
+<div id="toastMsg" class="toast-msg">✨ Booking confirmation simulation</div>
+
+<script>
+    // ---------- MASTER BUS DATABASE (expanded but based on design and additional realistic routes) ----------
+    const masterBuses = [
+        {
+            id: 1,
+            name: "Mirpur – Motijheel Express",
+            routeCode: "MIR-MTJ",
+            from: "Mirpur",
+            to: "Motijheel",
+            departureTime: "8:30 AM",
+            stops: 14,
+            durationMin: 45,
+            price: 35,
+            seatsLeft: 12,
+            active: true
+        },
+        {
+            id: 2,
+            name: "Uttara – Farmgate Direct",
+            routeCode: "UTT-FGT",
+            from: "Uttara",
+            to: "Farmgate",
+            departureTime: "8:45 AM",
+            stops: 8,
+            durationMin: 30,
+            price: 25,
+            seatsLeft: 3,
+            active: true
+        },
+        // Additional buses to enrich dashboard & showcase dynamic filtering (allowing more realistic search)
+        {
+            id: 3,
+            name: "Mirpur – Farmgate Super Express",
+            routeCode: "MIR-FGT",
+            from: "Mirpur",
+            to: "Farmgate",
+            departureTime: "9:15 AM",
+            stops: 5,
+            durationMin: 22,
+            price: 28,
+            seatsLeft: 7,
+            active: true
+        },
+        {
+            id: 4,
+            name: "Uttara – Motijheel CityLink",
+            routeCode: "UTT-MTJ",
+            from: "Uttara",
+            to: "Motijheel",
+            departureTime: "7:50 AM",
+            stops: 18,
+            durationMin: 55,
+            price: 40,
+            seatsLeft: 4,
+            active: true
+        },
+        {
+            id: 5,
+            name: "Mirpur – Motijheel AC Shuttle",
+            routeCode: "MIR-MTJ-AC",
+            from: "Mirpur",
+            to: "Motijheel",
+            departureTime: "10:00 AM",
+            stops: 9,
+            durationMin: 38,
+            price: 50,
+            seatsLeft: 2,
+            active: true
+        },
+        {
+            id: 6,
+            name: "Uttara – Farmgate Limited",
+            routeCode: "UTT-FGT-LTD",
+            from: "Uttara",
+            to: "Farmgate",
+            departureTime: "5:30 PM",
+            stops: 6,
+            durationMin: 28,
+            price: 30,
+            seatsLeft: 15,
+            active: true
+        }
+    ];
+
+    // Helper: format duration display
+    function formatDuration(minutes) {
+        return `${minutes} min`;
+    }
+
+    // Helper to build bus card HTML (based on design from image but with dynamic data)
+    function renderBusCard(bus) {
+        // determine stop text like "14 stops"
+        const stopText = bus.stops === 1 ? "1 stop" : `${bus.stops} stops`;
+        const timeText = `${bus.departureTime} - ${stopText} - ${formatDuration(bus.durationMin)}`;
+        // seat left badge style based on availability
+        let seatClass = "";
+        let seatText = `${bus.seatsLeft} seats left`;
+        if (bus.seatsLeft <= 3) {
+            seatClass = "style='background:#ffe1cc; color:#b85c00;'";
+        } else if (bus.seatsLeft <= 7) {
+            seatClass = "style='background:#fff0db;'";
+        } else {
+            seatClass = "style='background:#e3f5f0; color:#1c6e6e;'";
+        }
+
+        return `
+            <div class="bus-card" data-bus-id="${bus.id}">
+                <div class="bus-info">
+                    <div class="bus-name">
+                        <i class="fas fa-bus"></i> ${escapeHtml(bus.name)}
+                        <span class="route-badge"><i class="fas fa-route"></i> ${escapeHtml(bus.routeCode || bus.from.substring(0,3)+"-"+bus.to.substring(0,3))}</span>
+                    </div>
+                    <div class="bus-details">
+                        <span class="detail-item"><i class="far fa-clock"></i> ${bus.departureTime}</span>
+                        <span class="detail-item"><i class="fas fa-stop-circle"></i> ${stopText}</span>
+                        <span class="detail-item"><i class="fas fa-hourglass-half"></i> ${formatDuration(bus.durationMin)}</span>
+                        <span class="detail-item"><i class="fas fa-exchange-alt"></i> ${escapeHtml(bus.from)} → ${escapeHtml(bus.to)}</span>
+                    </div>
+                </div>
+                <div class="price-section">
+                    <div class="price">₹${bus.price}<small></small></div>
+                    <div class="seats-left" ${seatClass}><i class="fas fa-chair"></i> ${seatText}</div>
+                </div>
+                <button class="book-btn" data-id="${bus.id}" data-name="${escapeHtml(bus.name)}" data-price="${bus.price}"><i class="fas fa-ticket-alt"></i> Book now</button>
+            </div>
+        `;
+    }
+
+    // simple escape for safety
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
+        });
+    }
+
+    // filter buses based on fromStop, toStop (case-insensitive, partial match allowed)
+    function filterBuses(fromVal, toVal) {
+        if (!fromVal && !toVal) return masterBuses.slice(); // show all if empty? but we want consistent UX: show all if no filters, but search button will use actual.
+        let filtered = masterBuses.filter(bus => {
+            let fromMatch = true;
+            let toMatch = true;
+            if (fromVal && fromVal.trim() !== "") {
+                fromMatch = bus.from.toLowerCase().includes(fromVal.toLowerCase());
+            }
+            if (toVal && toVal.trim() !== "") {
+                toMatch = bus.to.toLowerCase().includes(toVal.toLowerCase());
+            }
+            return fromMatch && toMatch;
+        });
+        return filtered;
+    }
+
+    // render the bus list into container
+    function renderBuses(busesArray) {
+        const container = document.getElementById('busesContainer');
+        const countSpan = document.getElementById('busCountDisplay');
+        if (!busesArray.length) {
+            container.innerHTML = `<div class="empty-state"><i class="fas fa-search fa-2x" style="margin-bottom: 12px; opacity:0.6;"></i><h3>No buses found</h3><p>Try changing your stops or travel date ✨</p></div>`;
+            countSpan.innerText = `0 buses found`;
+            return;
+        }
+        let html = '';
+        for (let bus of busesArray) {
+            html += renderBusCard(bus);
+        }
+        container.innerHTML = html;
+        countSpan.innerText = `${busesArray.length} bus${busesArray.length !== 1 ? 'es' : ''} found`;
+    }
+
+    // show toast notification
+    let toastTimeout = null;
+    function showToast(message, isError = false) {
+        const toast = document.getElementById('toastMsg');
+        toast.style.backgroundColor = isError ? '#b3413b' : '#1c6e6e';
+        toast.textContent = message;
+        toast.style.opacity = '1';
+        if (toastTimeout) clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toast.style.opacity = '0';
+        }, 2800);
+    }
+
+    // Booking handler (dynamic event delegation)
+    function attachBookingEvents() {
+        const container = document.getElementById('busesContainer');
+        // remove any previous listener to avoid duplicates, but using event delegation is fine.
+        container.removeEventListener('click', bookingClickHandler);
+        container.addEventListener('click', bookingClickHandler);
+    }
+
+    function bookingClickHandler(e) {
+        const btn = e.target.closest('.book-btn');
+        if (!btn) return;
+        e.preventDefault();
+        const busId = btn.getAttribute('data-id');
+        const busName = btn.getAttribute('data-name');
+        const price = btn.getAttribute('data-price');
+        if (busId) {
+            // find original bus object to check seats left before booking
+            const originalBus = masterBuses.find(b => b.id == busId);
+            if (!originalBus) {
+                showToast("Bus information error", true);
+                return;
+            }
+            // Simulate seat availability update: if seats left > 0, decrement and re-render current filter view
+            if (originalBus.seatsLeft <= 0) {
+                showToast(`⚠️ Sorry, no seats left on ${busName}. Please choose another bus.`, true);
+                return;
+            }
+            // Booking simulation
+            originalBus.seatsLeft -= 1;
+            // get current filter values from input fields
+            const fromInput = document.getElementById('fromStop').value.trim();
+            const toInput = document.getElementById('toStop').value.trim();
+            const filtered = filterBuses(fromInput, toInput);
+            renderBuses(filtered);
+            attachBookingEvents();   // reattach because new buttons injected
+            showToast(`✅ Booked! 1 seat reserved on ${busName} (₹${price}). Seats left: ${originalBus.seatsLeft}`);
+            // additionally if seats become 0, show warning but its fine
+            if (originalBus.seatsLeft === 0) {
+                showToast(`❗ Last seat just got booked on ${busName}.`, false);
+            }
+        }
+    }
+
+    // search action: read fromStop, toStop, date (date just for UI simulation, not altering buses, but we respect the concept)
+    function performSearch() {
+        let fromStop = document.getElementById('fromStop').value.trim();
+        let toStop = document.getElementById('toStop').value.trim();
+        const travelDate = document.getElementById('travelDate').value;
+        // just for demonstration: show date feedback (optional, but meets design expectation)
+        let filteredBuses = filterBuses(fromStop, toStop);
+        renderBuses(filteredBuses);
+        attachBookingEvents();
+        // if both fields empty? show all buses, but based on requirement maybe show all or hint.
+        if (fromStop === "" && toStop === "") {
+            showToast(`📅 Showing all routes for ${travelDate || 'selected date'}`, false);
+        } else {
+            const fromMsg = fromStop ? ` from "${fromStop}"` : '';
+            const toMsg = toStop ? ` to "${toStop}"` : '';
+            showToast(`🔍 Found ${filteredBuses.length} bus(es)${fromMsg}${toMsg} on ${travelDate || 'any date'}`);
+        }
+        // If no results, empty state displayed by render function
+    }
+
+    // initial load: set default example values as per design: Mirpur -> Motijheel shows 1st and 5th? Actually 1,5 and maybe others: Mirpur-Motijheel also bus id 1 and 5, also extra id? yes id1 (mirpur-motijheel), id5 (mirpur-motijheel AC). Also id? no. so two matches. Also Uttara-farmgate: id2, id6. perfect
+    function initializeDashboard() {
+        // set default values that match exactly the mockup illustration: from Mirpur, to Motijheel.
+        document.getElementById('fromStop').value = "Mirpur";
+        document.getElementById('toStop').value = "Motijheel";
+        // Set a nice date example (today + something)
+        const today = new Date();
+        const futureDate = new Date(today);
+        futureDate.setDate(today.getDate() + 2);
+        const yyyy = futureDate.getFullYear();
+        const mm = String(futureDate.getMonth() + 1).padStart(2, '0');
+        const dd = String(futureDate.getDate()).padStart(2, '0');
+        document.getElementById('travelDate').value = `${yyyy}-${mm}-${dd}`;
+        
+        // filter with Mirpur → Motijheel to show exactly 2 buses as per original description (but we have 2 buses: Express and AC Shuttle)
+        // our masterBuses includes Mirpur–Motijheel Express (id1) and Mirpur–Motijheel AC Shuttle (id5) -> exactly 2. Also no extra because others are diff.
+        const initialBuses = filterBuses("Mirpur", "Motijheel");
+        renderBuses(initialBuses);
+        attachBookingEvents();
+        
+        // additionally, search button event
+        const searchBtn = document.getElementById('searchBtn');
+        // avoid duplicate listeners
+        const newSearchBtn = searchBtn.cloneNode(true);
+        searchBtn.parentNode.replaceChild(newSearchBtn, searchBtn);
+        newSearchBtn.addEventListener('click', performSearch);
+        
+        // allow enter key on inputs for better usability
+        const inputs = ['fromStop', 'toStop', 'travelDate'];
+        inputs.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') performSearch();
+                });
+            }
+        });
+    }
+
+    // ready
+    window.addEventListener('DOMContentLoaded', initializeDashboard);
+</script>
+</body>
+</html>
