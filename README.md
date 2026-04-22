@@ -121,28 +121,6 @@ npm run dev
 
 ---
 
-## ⚙️ Environment Setup
-
-```env
-PORT=3000
-NODE_ENV=development
-
-DATABASE_URL=postgresql://user:password@localhost:5432/bussheba
-
-JWT_SECRET=your_secret
-
-SMS_GATEWAY_API_KEY=your_sms_key
-
-BKASH_APP_KEY=
-BKASH_APP_SECRET=
-NAGAD_API_KEY=
-ROCKET_API_KEY=
-
-GOOGLE_MAPS_API_KEY=your_key
-```
-
----
-
 ## 📦 Feature Modules
 
 ### 🔹 Phase 1 (Core System)
@@ -195,7 +173,7 @@ git push origin feature/your-feature
 
 ## 📄 License
 
-Developed for the **Government of Bangladesh**. Usage is subject to official licensing terms.
+Developed for the **GovBD**. Usage is subject to official licensing terms.
 
 ---
 
