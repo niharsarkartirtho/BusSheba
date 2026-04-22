@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trip Rating Structure</title>
+</head>
+<body>
+
+    <header>
+        <span>⭐</span>
+        <h1>Rate Your Trip</h1>
+    </header>
+
+    <main>
+        <section id="trip-info">
+            <p>Uttara → Farmgate · Today 8:45 AM</p>
+            <p><strong>Driver: Karim · Bus DH-5678</strong></p>
+        </section>
+
+        <section id="rating-input">
+            <h2>How was your ride?</h2>
+            
+            <div id="stars">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+            </div>
+
+            <div id="tags">
+                <button>✅ On Time</button>
+                <button>🧹 Clean</button>
+                <button>😊 Friendly</button>
+                <button>👥 Crowded</button>
+                <button>✨ Fast</button>
+            </div>
+
+            <textarea placeholder="Write a comment (optional)..."></textarea>
+            
+            <button type="submit">Submit Review ⭐</button>
+        </section>
+
+        <hr>
+
+        <section id="bus-pass">
+            <small>BUS PASS</small>
+            
+            <div id="active-pass-card">
+                <p>MONTHLY PASS - ACTIVE</p>
+                <h3>🚌 Mirpur Route Pass</h3>
+                <p>12 trips remaining · Expires Apr 30</p>
+                <progress value="60" max="100"></progress>
+            </div>
+
+            <div id="pass-actions">
+                <button>🎫 Buy Pass</button>
+                <button>💳 Top Up</button>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
