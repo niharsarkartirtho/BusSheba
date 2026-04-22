@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Booking Confirmed</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  width: 350px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.header {
+  background: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.header p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+/* Ticket Box */
+.ticket-box {
+  margin: 15px;
+  padding: 15px;
+  border: 2px solid #3f6fb5;
+  border-radius: 10px;
+  text-align: center;
+  background: #eaf1fb;
+}
+
+.qr {
+  width: 120px;
+  height: 120px;
+  background: repeating-linear-gradient(
+    90deg,
+    black 0px,
+    black 5px,
+    white 5px,
+    white 10px
+  );
+  margin: 10px auto;
+}
+
+.ticket-box p {
+  font-size: 12px;
+  color: #2c5aa0;
+}
+
+/* Trip Details */
+.details {
+  margin: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.details-header {
+  background: #eee;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 12px;
+  color: #666;
+}
+
+.details-body {
+  padding: 15px;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.label {
+  color: #888;
+  font-size: 12px;
+}
+
+.value {
+  font-weight: bold;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.download {
+  background: #1e5bb8;
+  color: white;
+}
+
+.share {
+  background: white;
+  border: 2px solid #1e5bb8;
+  color: #1e5bb8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h2>✅ Booking Confirmed! 🎉</h2>
+    <p>Your e-ticket is ready</p>
+  </div>
+
+  <div class="ticket-box">
+    <h4>BusSheba E-Ticket</h4>
+    <div class="qr"></div>
+    <p>Scan at bus gate to board</p>
+  </div>
+
+  <div class="details">
+    <div class="details-header">TRIP DETAILS</div>
+    <div class="details-body">
+
+      <div class="row">
+        <div>
+          <div class="label">FROM</div>
+          <div class="value">Mirpur 10</div>
+        </div>
+        <div>→</div>
+        <div>
+          <div class="label">TO</div>
+          <div class="value">Motijheel</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <div class="label">DATE & TIME</div>
+          <div class="value">Today, 8:30 AM</div>
+        </div>
+        <div>
+          <div class="label">SEAT</div>
+          <div class="value">2B, 4D</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <div class="label">PASSENGER</div>
+          <div class="value">Adib Khan</div>
+        </div>
+        <div>
+          <div class="label">FARE</div>
+          <div class="value">৳ 70</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn download">⬇ Download</button>
+    <button class="btn share">↗ Share</button>
+  </div>
+
+</div>
+
+</body>
+</html>
