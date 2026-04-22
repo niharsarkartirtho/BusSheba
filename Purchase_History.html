@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BusSheba Ticket</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  width: 360px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.header {
+  background: #2e7d32;
+  color: white;
+  padding: 18px;
+}
+
+.header h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.header p {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Ticket Section */
+.ticket-box {
+  margin: 18px;
+  border: 2px solid #2f6cd1;
+  border-radius: 12px;
+  background: #eaf2ff;
+  text-align: center;
+  padding: 15px;
+}
+
+.ticket-box h4 {
+  color: #2f6cd1;
+  margin-bottom: 12px;
+}
+
+.qr {
+  width: 110px;
+  height: 110px;
+  margin: auto;
+  background: repeating-linear-gradient(
+    90deg,
+    #000 0px,
+    #000 6px,
+    #fff 6px,
+    #fff 12px
+  );
+  border-radius: 6px;
+}
+
+.ticket-box p {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #2f6cd1;
+}
+
+/* Details */
+.details {
+  margin: 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.details-header {
+  background: #eee;
+  padding: 10px 15px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #777;
+}
+
+.details-body {
+  padding: 15px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.label {
+  font-size: 11px;
+  color: #888;
+}
+
+.value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.arrow {
+  font-size: 18px;
+  color: #555;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  gap: 10px;
+  padding: 0 18px 18px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Download Button */
+.download {
+  background: #2f6cd1;
+  color: white;
+  border: none;
+}
+
+/* Share Button */
+.share {
+  background: white;
+  color: #2f6cd1;
+  border: 2px solid #2f6cd1;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h2>✔ Booking Confirmed! 🎉</h2>
+    <p>Your e-ticket is ready</p>
+  </div>
+
+  <!-- Ticket -->
+  <div class="ticket-box">
+    <h4>BusSheba - E-Ticket</h4>
+    <div class="qr"></div>
+    <p>Scan at bus gate to board</p>
+  </div>
+
+  <!-- Details -->
+  <div class="details">
+    <div class="details-header">TRIP DETAILS</div>
+
+    <div class="details-body">
+
+      <div class="row">
+        <div>
+          <div class="label">FROM</div>
+          <div class="value">Mirpur 10</div>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div>
+          <div class="label">TO</div>
+          <div class="value">Motijheel</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <div class="label">DATE & TIME</div>
+          <div class="value">Today, 8:30 AM</div>
+        </div>
+
+        <div>
+          <div class="label">SEAT</div>
+          <div class="value">2B, 4D</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <div class="label">PASSENGER</div>
+          <div class="value">Adib Khan</div>
+        </div>
+
+        <div>
+          <div class="label">FARE</div>
+          <div class="value">৳ 70</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="buttons">
+    <button class="btn download">⬇ Download</button>
+    <button class="btn share">↗ Share</button>
+  </div>
+
+</div>
+
+</body>
+</html>
