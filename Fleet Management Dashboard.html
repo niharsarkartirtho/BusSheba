@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Fleet Overview</title>
+</head>
+<body class="bg-gray-100 flex">
+    <aside class="w-64 bg-slate-900 text-white min-h-screen p-4">
+        <h2 class="text-2xl font-bold mb-8">FleetControl</h2>
+        <nav class="space-y-4">
+            <a href="#" class="block p-2 bg-blue-600 rounded">Dashboard</a>
+            <a href="#" class="block p-2 hover:bg-slate-800">Vehicles</a>
+            <a href="#" class="block p-2 hover:bg-slate-800">Maintenance</a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 p-8">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Fleet Statistics</h1>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded">+ Add Vehicle</button>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500">
+                <p class="text-gray-500 text-sm">Total Vehicles</p>
+                <p class="text-2xl font-bold">142</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500">
+                <p class="text-gray-500 text-sm">In Motion</p>
+                <p class="text-2xl font-bold">98</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-yellow-500">
+                <p class="text-gray-500 text-sm">In Maintenance</p>
+                <p class="text-2xl font-bold">12</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-red-500">
+                <p class="text-gray-500 text-sm">Idle</p>
+                <p class="text-2xl font-bold">32</p>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-gray-50 border-b">
+                    <tr>
+                        <th class="p-4">Vehicle ID</th>
+                        <th class="p-4">Model</th>
+                        <th class="p-4">Fuel Level</th>
+                        <th class="p-4">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="p-4 font-mono">TRK-9021</td>
+                        <td class="p-4">Raida</td>
+                        <td class="p-4">78%</td>
+                        <td class="p-4"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

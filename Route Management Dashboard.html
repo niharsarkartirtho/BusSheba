@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Route Management</title>
+</head>
+<body class="bg-gray-50 h-screen flex flex-col">
+    <nav class="bg-white border-b px-8 py-4 flex justify-between items-center">
+        <h2 class="font-bold text-xl text-blue-700">RoutePlanner</h2>
+        <div class="flex space-x-4">
+            <input type="text" placeholder="Search routes..." class="border rounded-lg px-4 py-1">
+            <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+        </div>
+    </nav>
+
+    <div class="flex flex-1 overflow-hidden">
+        <div class="w-80 bg-white border-r overflow-y-auto p-4">
+            <h3 class="font-semibold mb-4">Active Routes</h3>
+            <div class="space-y-3">
+                <div class="p-4 border rounded-lg hover:border-blue-500 cursor-pointer transition">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-bold">RT-502 (Zone A)</span>
+                        <span class="text-xs text-blue-600">85% Complete</span>
+                    </div>
+                    <div class="w-full bg-gray-200 h-2 rounded-full">
+                        <div class="bg-blue-500 h-2 rounded-full w-[85%]"></div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">Driver: Anis Rahman</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 bg-gray-200 relative flex items-center justify-center">
+            <p class="text-gray-500 italic">[Interactive Map Integration Goes Here]</p>
+            <div class="absolute bottom-6 left-6 bg-white p-4 rounded-lg shadow-lg">
+                <h4 class="font-bold">Next Milestone</h4>
+                <p class="text-sm text-gray-600">Warehouse 4 → Downtown Hub</p>
+                <p class="text-xs text-red-500 mt-1">Traffic Delay: +15 mins</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
